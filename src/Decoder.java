@@ -1,4 +1,5 @@
 import java.math.BigInteger;
+import java.util.ArrayList;
 
 public class Decoder {
 
@@ -23,19 +24,15 @@ public class Decoder {
         return result.intValue();
     }
 
-    public String ASCIISimpleDecode(String content,int intSize) {
+    public String ASCIISimpleDecode(ArrayList<Integer> content, int intSize) {
         //TODO check si la longueur est bien divisible par 3
 
         System.out.println("\n \n");
         String decodedMessage = "";
-        for(int i = 0;i < content.length()/intSize  ; i++){
+        for(int cryptedChar : content){
             // Cropping by size of hashing : ABCDEF => ABC DEF
-            int cryptedChar = Integer.valueOf(content.substring(i*intSize,i*intSize+intSize));
-            System.out.println(cryptedChar);
             int encodeddChar = this.RSADecode(cryptedChar);
-            System.out.println(encodeddChar );
             decodedMessage +=  Character.toString((char) this.RSADecode(cryptedChar));
-            System.out.println(decodedMessage+"\n");
         }
 
         return decodedMessage;

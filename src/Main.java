@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Main {
 
     public static void main(String[] args) throws Exception {
@@ -13,13 +15,13 @@ public class Main {
 
 
         String message = "Sel moulu récolté manuellement";
-        String encodedMessage = encoder.simpleEncode(message);
+        ArrayList encodedMessage = encoder.simpleEncode(message);
         System.out.println("Message encodé");
-        System.out.println(encodedMessage);
+        System.out.println(encodedMessage.toString());
 
-        String cryptedMessage = encoder.RSAEncoding(encodedMessage,3);
+        ArrayList cryptedMessage = encoder.RSAEncoding(encodedMessage);
         System.out.println("Message crypté");
-        System.out.println(cryptedMessage);
+        System.out.println(cryptedMessage.toString());
 
 
         String decodedMessage = decoder.ASCIISimpleDecode(cryptedMessage,3);
